@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Inspections</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add">add</string>
+    <string name="modal_back_button">modal back button</string>
+    <string name="modal_information_button">modal information button</string>
+    <string name="rating_button">rating button</string>
+</resources>

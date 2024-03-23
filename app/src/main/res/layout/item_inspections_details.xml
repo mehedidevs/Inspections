@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/large_spacing"
+        android:layout_marginVertical="@dimen/small_spacing">
+
+        <TextView
+            android:id="@+id/txt_inspections_type_title"
+            style="@style/txt_style_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/medium_spacing"
+            android:background="@drawable/bg_inspections_item"
+            android:padding="@dimen/medium_spacing"
+            app:drawableEndCompat="@drawable/ic_down_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/txt_inspections_sub_title"
+            style="@style/txt_style_sub_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_inspections_item"
+            android:padding="@dimen/medium_spacing"
+            app:drawableEndCompat="@drawable/ic_down_arrow"
+            app:layout_constraintEnd_toEndOf="@id/txt_inspections_type_title"
+            app:layout_constraintStart_toStartOf="@id/txt_inspections_type_title"
+            app:layout_constraintTop_toBottomOf="@id/txt_inspections_type_title"
+            tools:text="@string/app_name" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/txt_inspections_sub_title"
+            app:layout_constraintStart_toStartOf="@id/txt_inspections_type_title"
+            app:layout_constraintTop_toBottomOf="@id/txt_inspections_sub_title"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_task" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
