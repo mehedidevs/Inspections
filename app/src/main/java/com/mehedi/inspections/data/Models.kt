@@ -1,4 +1,7 @@
-package com.mehedi.inspections
+package com.mehedi.inspections.data
+
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
 enum class InspectionStatus(val status: String) {
     INPROGRESS("inprogress"), CANCEL("cancel"), DONE("done")
@@ -33,5 +36,13 @@ data class TaskDetails(
     val numberOfStar: Int,
     val numberOfAttach: Int,
     val numberOfComments: Int,
-    val taskStatus: TaskStatus
+    val taskStatus: TaskStatus,
+    val images: Images
+
 )
+
+@Parcelize
+data class Images(
+    val imageList: List<String>
+) : Parcelable
+

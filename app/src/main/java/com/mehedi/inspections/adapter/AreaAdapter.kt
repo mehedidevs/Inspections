@@ -1,13 +1,15 @@
-package com.mehedi.inspections
+package com.mehedi.inspections.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.mehedi.inspections.data.WorkingArea
 import com.mehedi.inspections.databinding.ItemInspectionsAreaBinding
 
-class AreaAdapter : ListAdapter<WorkingArea, AreaAdapter.AreaViewHolder>(COMPARATOR) {
+class AreaAdapter(private val listener: TaskAdapter.TaskClickListener) :
+    ListAdapter<WorkingArea, AreaAdapter.AreaViewHolder>(COMPARATOR) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AreaViewHolder {
@@ -28,9 +30,9 @@ class AreaAdapter : ListAdapter<WorkingArea, AreaAdapter.AreaViewHolder>(COMPARA
 
     }
 
-    class AreaViewHolder(var binding: ItemInspectionsAreaBinding) :
+    inner class AreaViewHolder(var binding: ItemInspectionsAreaBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        private val taskAdapter = TaskAdapter()
+        private val taskAdapter = TaskAdapter(listener)
 
         fun bind(details: WorkingArea) {
             taskAdapter.submitList(details.list)

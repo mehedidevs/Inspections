@@ -1,10 +1,11 @@
-package com.mehedi.inspections
+package com.mehedi.inspections.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.mehedi.inspections.data.Inspection
 import com.mehedi.inspections.databinding.ItemInspectionsBinding
 
 class InspectionAdapter(private val listener: InspectionListener) :

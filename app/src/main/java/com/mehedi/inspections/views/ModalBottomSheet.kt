@@ -1,21 +1,29 @@
-package com.mehedi.inspections
+package com.mehedi.inspections.views
 
 import android.app.Dialog
 import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.mehedi.inspections.R
+import com.mehedi.inspections.adapter.ModalAdapter
+import com.mehedi.inspections.adapter.TaskAdapter
+import com.mehedi.inspections.data.Images
+import com.mehedi.inspections.data.TaskStatus
 import com.mehedi.inspections.databinding.ModalBottomSheetContentBinding
+import com.mehedi.inspections.utils.toast
 import kotlin.math.roundToInt
 
 
-class ModalBottomSheet : BottomSheetDialogFragment() {
+class ModalBottomSheet : BottomSheetDialogFragment(), TaskAdapter.TaskClickListener {
 
     private lateinit var dialog: BottomSheetDialog
     private lateinit var binding: ModalBottomSheetContentBinding
@@ -67,15 +75,13 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
 
         viewModel.inspection.observe(viewLifecycleOwner) { inspection ->
 
-            val modalAdapter = ModalAdapter()
+            val modalAdapter = ModalAdapter(this@ModalBottomSheet)
             modalAdapter.submitList(inspection.inspectionDetailsList)
 
             binding.apply {
                 txtPropertyName.text = inspection.propertyName
                 txtHotelName.text = inspection.propertyName
                 rvModal.adapter = modalAdapter
-
-
             }
         }
 
@@ -92,8 +98,19 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
 
     }
 
-
     companion object {
         const val TAG = "ModalBottomSheet"
+    }
+
+    override fun onTaskClick(images: Images) {
+        Log.d(TAG, "onTaskClick: $images ")
+        val bundle = Bundle()
+        bundle.putParcelable("images", images)
+        findNavController().navigate(R.id.action_firstScreenFragment_to_imageSliderFragment, bundle)
+
+    }
+
+    override fun onTaskStatusUpdate(status: TaskStatus) {
+
     }
 }

@@ -1,14 +1,23 @@
-package com.mehedi.inspections
+package com.mehedi.inspections.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.mehedi.inspections.data.Images
+import com.mehedi.inspections.data.TaskDetails
+import com.mehedi.inspections.data.TaskStatus
 import com.mehedi.inspections.databinding.ItemTaskBinding
 
-class TaskAdapter : ListAdapter<TaskDetails, TaskAdapter.TaskViewHolder>(COMPARATOR) {
+class TaskAdapter(private val listener: TaskClickListener) :
+    ListAdapter<TaskDetails, TaskAdapter.TaskViewHolder>(COMPARATOR) {
 
+    interface TaskClickListener {
+        fun onTaskClick(images: Images)
+        fun onTaskStatusUpdate(status: TaskStatus)
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         return TaskViewHolder(
@@ -24,7 +33,7 @@ class TaskAdapter : ListAdapter<TaskDetails, TaskAdapter.TaskViewHolder>(COMPARA
         holder.bind(getItem(position))
     }
 
-    class TaskViewHolder(var binding: ItemTaskBinding) :
+    inner class TaskViewHolder(var binding: ItemTaskBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(details: TaskDetails) {
             binding.apply {
@@ -32,7 +41,13 @@ class TaskAdapter : ListAdapter<TaskDetails, TaskAdapter.TaskViewHolder>(COMPARA
                 txtStarCount.text = details.numberOfStar.toString()
                 txtAttachCount.text = details.numberOfAttach.toString()
                 txtCommentsCount.text = details.numberOfComments.toString()
+
+                itemView.setOnClickListener {
+                    listener.onTaskClick(details.images)
+                }
+
             }
+
 
         }
     }

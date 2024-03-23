@@ -1,4 +1,4 @@
-package com.mehedi.inspections
+package com.mehedi.inspections.views
 
 import android.os.Build
 import android.os.Bundle
@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.mehedi.inspections.R
 import com.mehedi.inspections.databinding.ActivityMainBinding
 
 

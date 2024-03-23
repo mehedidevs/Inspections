@@ -1,8 +1,10 @@
-package com.mehedi.inspections
+package com.mehedi.inspections.views
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.mehedi.inspections.data.Inspection
+import com.mehedi.inspections.data.DataSource
 
 class InspectionViewModel : ViewModel() {
 

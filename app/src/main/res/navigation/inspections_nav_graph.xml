@@ -7,7 +7,21 @@
 
     <fragment
         android:id="@+id/firstScreenFragment"
-        android:name="com.mehedi.inspections.FirstScreenFragment"
+        android:name="com.mehedi.inspections.views.FirstScreenFragment"
         android:label="fragment_first_screen"
-        tools:layout="@layout/fragment_first_screen" />
+        tools:layout="@layout/fragment_first_screen">
+        <action
+            android:id="@+id/action_firstScreenFragment_to_imageSliderFragment"
+            app:destination="@id/imageSliderFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/imageSliderFragment"
+        android:name="com.mehedi.inspections.views.ImageSliderFragment"
+        android:label="fragment_image_slider"
+        tools:layout="@layout/fragment_image_slider">
+
+    </fragment>
+
+
 </navigation>
