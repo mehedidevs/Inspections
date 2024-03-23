@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 
 class InspectionViewModel : ViewModel() {
 
-    private val _inspectionResponse = MutableLiveData<DataModel>()
-    val inspectionResponse: LiveData<DataModel>
+    private val _inspectionResponse = MutableLiveData<List<Inspection>>()
+    val inspectionResponse: LiveData<List<Inspection>>
         get() = _inspectionResponse
 
     init {
@@ -16,7 +16,7 @@ class InspectionViewModel : ViewModel() {
 
 
     private fun getInspection() {
-        _inspectionResponse.postValue(DataSource.dummyData)
+        _inspectionResponse.postValue(DataSource.dummyInspections)
 
     }
 

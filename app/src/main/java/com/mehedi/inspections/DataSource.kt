@@ -1,95 +1,191 @@
 package com.mehedi.inspections
 
 object DataSource {
-    val dummyData: DataModel = DataModel(
-            dataList = listOf(
-                Inspection(
-                    inspectionType = "Routine",
-                    propertyName = "Property A",
-                    inspectionDate = "2024-03-23",
-                    inspectionStatus = InspectionStatus.IN_PROGRESS,
-                    inspectedBy = "Inspector X",
-                    inspectionCategory = InspectionCategory(
-                        categoryName = "General",
-                        areaList = listOf(
-                            Area(
-                                areaName = "Exterior",
-                                checkList = listOf(
-                                    Details(
-                                        title = "Roof condition",
-                                        numberOfStar = 4,
-                                        numberOfAttach = 2,
-                                        numberOfComments = 3
-                                    ),
-                                    Details(
-                                        title = "Sidewalk condition",
-                                        numberOfStar = 5,
-                                        numberOfAttach = 1,
-                                        numberOfComments = 2
-                                    )
+
+    val dummyInspections = listOf(
+        Inspection(
+            inspectionType = "Fire Safety Inspection",
+            propertyName = "123 Main Street",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.INPROGRESS,
+            inspectedBy = "John Doe",
+            inspectionDetailsList = listOf(
+                InspectionDetails(
+                    inspectionName = "Fire Safety Equipment",
+                    list = listOf(
+                        WorkingArea(
+                            name = "Fire Extinguishers",
+                            list = listOf(
+                                TaskDetails(
+                                    title = "Check pressure gauge",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for physical damage",
+                                    numberOfStar = 2,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE
                                 )
-                            ),
-                            Area(
-                                areaName = "Interior",
-                                checkList = listOf(
-                                    Details(
-                                        title = "Floor condition",
-                                        numberOfStar = 4,
-                                        numberOfAttach = 0,
-                                        numberOfComments = 1
-                                    ),
-                                    Details(
-                                        title = "Wall condition",
-                                        numberOfStar = 3,
-                                        numberOfAttach = 0,
-                                        numberOfComments = 0
-                                    )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Emergency Exit",
+                            list = listOf(
+                                TaskDetails(
+                                    title = "Ensure clear pathway",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE
+                                ),
+                                TaskDetails(
+                                    title = "Test emergency lighting",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.NEXT_TIME
                                 )
                             )
                         )
                     )
                 ),
-                Inspection(
-                    inspectionType = "Scheduled",
-                    propertyName = "Property B",
-                    inspectionDate = "2024-03-24",
-                    inspectionStatus = InspectionStatus.DONE,
-                    inspectedBy = "Inspector Y",
-                    inspectionCategory = InspectionCategory(
-                        categoryName = "Electrical",
-                        areaList = listOf(
-                            Area(
-                                areaName = "Wiring",
-                                checkList = listOf(
-                                    Details(
-                                        title = "Main panel",
-                                        numberOfStar = 5,
-                                        numberOfAttach = 2,
-                                        numberOfComments = 1
-                                    ),
-                                    Details(
-                                        title = "Outlet testing",
-                                        numberOfStar = 4,
-                                        numberOfAttach = 1,
-                                        numberOfComments = 0
-                                    )
+                InspectionDetails(
+                    inspectionName = "Electrical Safety",
+                    list = listOf(
+                        WorkingArea(
+                            name = "Circuit Breakers",
+                            list = listOf(
+                                TaskDetails(
+                                    title = "Check for proper labeling",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for overheating",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL
                                 )
-                            ),
-                            Area(
-                                areaName = "Fixtures",
-                                checkList = listOf(
-                                    Details(
-                                        title = "Ceiling lights",
-                                        numberOfStar = 3,
-                                        numberOfAttach = 0,
-                                        numberOfComments = 2
-                                    ),
-                                    Details(
-                                        title = "Wall switches",
-                                        numberOfStar = 4,
-                                        numberOfAttach = 0,
-                                        numberOfComments = 1
-                                    )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Electrical Outlets",
+                            list = listOf(
+                                TaskDetails(
+                                    title = "Check for grounding",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for loose connections",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NEXT_TIME
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Health and Safety Inspection",
+            propertyName = "456 Oak Avenue",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.DONE,
+            inspectedBy = "Jane Smith",
+            inspectionDetailsList = listOf(
+                InspectionDetails(
+                    inspectionName = "Sanitation",
+                    list = listOf(
+                        WorkingArea(
+                            name = "Kitchen",
+                            list = listOf(
+                                TaskDetails(
+                                    title = "Check refrigerator temperature",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE
+                                ),
+                                TaskDetails(
+                                    title = "Inspect food storage",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Restrooms",
+                            list = listOf(
+                                TaskDetails(
+                                    title = "Clean sinks and countertops",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE
+                                ),
+                                TaskDetails(
+                                    title = "Restock paper towels",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE
+                                )
+                            )
+                        )
+                    )
+                ),
+                InspectionDetails(
+                    inspectionName = "Fire Safety Measures",
+                    list = listOf(
+                        WorkingArea(
+                            name = "Smoke Alarms",
+                            list = listOf(
+                                TaskDetails(
+                                    title = "Test functionality",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE
+                                ),
+                                TaskDetails(
+                                    title = "Replace batteries",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NEXT_TIME
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Emergency Evacuation Plan",
+                            list = listOf(
+                                TaskDetails(
+                                    title = "Review with staff",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE
+                                ),
+                                TaskDetails(
+                                    title = "Update exit routes",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL
                                 )
                             )
                         )
@@ -97,6 +193,7 @@ object DataSource {
                 )
             )
         )
+    )
 
 
 }

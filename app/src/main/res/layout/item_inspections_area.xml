@@ -9,16 +9,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/large_spacing"
-        android:layout_marginVertical="@dimen/small_spacing">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txt_inspections_type_title"
-            style="@style/txt_style_title"
+            android:id="@+id/txt_inspections_sub_title"
+            style="@style/txt_style_sub_title"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/medium_spacing"
+            android:layout_height="wrap_content"
             android:background="@drawable/bg_inspections_item"
             android:padding="@dimen/medium_spacing"
             app:drawableEndCompat="@drawable/ic_down_arrow"
@@ -27,17 +24,17 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/app_name" />
 
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_working_area"
+            android:id="@+id/rv_task"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="visible"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@id/txt_inspections_type_title"
-            app:layout_constraintStart_toStartOf="@id/txt_inspections_type_title"
-            app:layout_constraintTop_toBottomOf="@id/txt_inspections_type_title"
-            tools:itemCount="2"
-            tools:listitem="@layout/item_inspections_area" />
+            app:layout_constraintEnd_toEndOf="@id/txt_inspections_sub_title"
+            app:layout_constraintStart_toStartOf="@id/txt_inspections_sub_title"
+            app:layout_constraintTop_toBottomOf="@id/txt_inspections_sub_title"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_task" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

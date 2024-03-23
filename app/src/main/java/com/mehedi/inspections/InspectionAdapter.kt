@@ -32,7 +32,7 @@ class InspectionAdapter(private val listener: InspectionListener) :
             binding.apply {
                 txtInspectionsTitle.text = inspection.inspectionType
                 txtInspectionsSubTitle.text = inspection.propertyName
-                txtInspectionsDate.text = inspection.inspectionDate
+                txtInspectionsDate.text = "${inspection.inspectionDate}"
                 itemView.setOnClickListener {
                     listener.onInspectionClicked(inspection)
                 }

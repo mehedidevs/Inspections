@@ -39,7 +39,7 @@ class FirstScreenFragment : Fragment(), InspectionAdapter.InspectionListener {
 
     private fun setInspectionObserver() {
         viewModel.inspectionResponse.observe(viewLifecycleOwner) {
-            inspectionAdapter.submitList(it.dataList)
+            inspectionAdapter.submitList(it)
         }
     }
 

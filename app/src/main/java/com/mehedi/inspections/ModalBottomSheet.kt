@@ -67,11 +67,15 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
 
         viewModel.inspection.observe(viewLifecycleOwner) { inspection ->
 
+            val modalAdapter = ModalAdapter()
+            modalAdapter.submitList(inspection.inspectionDetailsList)
 
             binding.apply {
                 txtPropertyName.text = inspection.propertyName
                 txtHotelName.text = inspection.propertyName
-                txtDetails.text = inspection.inspectionDate
+                rvModal.adapter = modalAdapter
+
+
             }
         }
 

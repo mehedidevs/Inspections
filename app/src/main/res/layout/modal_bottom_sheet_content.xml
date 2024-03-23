@@ -88,7 +88,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_details"
                 tools:itemCount="3"
-                tools:listitem="@layout/item_inspections" />
+                tools:listitem="@layout/item_inspections_details" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
