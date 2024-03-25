@@ -2,20 +2,20 @@ package com.mehedi.inspections.data
 
 object DataSource {
 
-    val dummyInspections = listOf(
+    val dummyInspections = mutableListOf(
         Inspection(
             inspectionType = "Fire Safety Inspection",
             propertyName = "123 Main Street",
             inspectionDate = System.currentTimeMillis(),
             inspectionStatus = InspectionStatus.INPROGRESS,
             inspectedBy = "John Doe",
-            inspectionDetailsList = listOf(
+            inspectionDetailsList = mutableListOf(
                 InspectionDetails(
                     inspectionName = "Fire Safety Equipment",
-                    list = listOf(
+                    list = mutableListOf(
                         WorkingArea(
                             name = "Fire Extinguishers",
-                            list = listOf(
+                            list = mutableListOf(
                                 TaskDetails(
                                     title = "Check pressure gauge",
                                     numberOfStar = 3,
@@ -36,7 +36,7 @@ object DataSource {
                         ),
                         WorkingArea(
                             name = "Emergency Exit",
-                            list = listOf(
+                            list = mutableListOf(
                                 TaskDetails(
                                     title = "Ensure clear pathway",
                                     numberOfStar = 4,
@@ -59,10 +59,10 @@ object DataSource {
                 ),
                 InspectionDetails(
                     inspectionName = "Electrical Safety",
-                    list = listOf(
+                    list = mutableListOf(
                         WorkingArea(
                             name = "Circuit Breakers",
-                            list = listOf(
+                            list = mutableListOf(
                                 TaskDetails(
                                     title = "Check for proper labeling",
                                     numberOfStar = 3,
@@ -83,7 +83,7 @@ object DataSource {
                         ),
                         WorkingArea(
                             name = "Electrical Outlets",
-                            list = listOf(
+                            list = mutableListOf(
                                 TaskDetails(
                                     title = "Check for grounding",
                                     numberOfStar = 5,
@@ -112,13 +112,13 @@ object DataSource {
             inspectionDate = System.currentTimeMillis(),
             inspectionStatus = InspectionStatus.DONE,
             inspectedBy = "Jane Smith",
-            inspectionDetailsList = listOf(
+            inspectionDetailsList = mutableListOf(
                 InspectionDetails(
                     inspectionName = "Sanitation",
-                    list = listOf(
+                    list = mutableListOf(
                         WorkingArea(
                             name = "Kitchen",
-                            list = listOf(
+                            list = mutableListOf(
                                 TaskDetails(
                                     title = "Check refrigerator temperature",
                                     numberOfStar = 5,
@@ -139,7 +139,7 @@ object DataSource {
                         ),
                         WorkingArea(
                             name = "Restrooms",
-                            list = listOf(
+                            list = mutableListOf(
                                 TaskDetails(
                                     title = "Clean sinks and countertops",
                                     numberOfStar = 4,
@@ -162,10 +162,10 @@ object DataSource {
                 ),
                 InspectionDetails(
                     inspectionName = "Fire Safety Measures",
-                    list = listOf(
+                    list = mutableListOf(
                         WorkingArea(
                             name = "Smoke Alarms",
-                            list = listOf(
+                            list = mutableListOf(
                                 TaskDetails(
                                     title = "Test functionality",
                                     numberOfStar = 5,
@@ -186,7 +186,7 @@ object DataSource {
                         ),
                         WorkingArea(
                             name = "Emergency Evacuation Plan",
-                            list = listOf(
+                            list = mutableListOf(
                                 TaskDetails(
                                     title = "Review with staff",
                                     numberOfStar = 5,

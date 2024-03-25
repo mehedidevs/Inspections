@@ -25,7 +25,7 @@ class ImageSliderFragment : Fragment() {
 
     lateinit var binding: FragmentImageSliderBinding
     private lateinit var viewPager2: ViewPager2
-    private lateinit var handler: Handler
+
     private lateinit var adapter: ImageAdapter
 
     private lateinit var pageChangeListener: ViewPager2.OnPageChangeCallback
@@ -56,13 +56,7 @@ class ImageSliderFragment : Fragment() {
             setUpTransformer()
             setDots(images)
 
-            viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    handler.removeCallbacks(runnable)
-                    handler.postDelayed(runnable, 2000)
-                }
-            })
+
         }
         return binding.root
     }
@@ -84,9 +78,7 @@ class ImageSliderFragment : Fragment() {
 
             pageChangeListener = object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
-                    if (position >= dotsImage.size) {
-                        dotsImage[0].setImageResource(R.drawable.active_dot)
-                    }
+
                     dotsImage.mapIndexed { index, imageView ->
                         if (position == index) {
                             imageView.setImageResource(
@@ -109,9 +101,7 @@ class ImageSliderFragment : Fragment() {
     }
 
 
-    private val runnable = Runnable {
-        viewPager2.currentItem += 1
-    }
+
 
     private fun setUpTransformer() {
         val transformer = CompositePageTransformer()
@@ -127,8 +117,7 @@ class ImageSliderFragment : Fragment() {
     private fun init(images: Images?) {
 
         images?.let {
-            handler = Handler(Looper.getMainLooper())
-            adapter = ImageAdapter(images.imageList.toMutableList(), viewPager2)
+            adapter = ImageAdapter(images.imageList.toMutableList())
             viewPager2.adapter = adapter
             viewPager2.offscreenPageLimit = 3
             viewPager2.clipToPadding = false
@@ -138,15 +127,7 @@ class ImageSliderFragment : Fragment() {
 
     }
 
-    override fun onPause() {
-        super.onPause()
-        handler.removeCallbacks(runnable)
-    }
 
-    override fun onResume() {
-        super.onResume()
-        handler.postDelayed(runnable, 2000)
-    }
 
     override fun onDestroy() {
         super.onDestroy()

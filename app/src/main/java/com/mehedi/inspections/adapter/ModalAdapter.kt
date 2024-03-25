@@ -10,6 +10,7 @@ import com.mehedi.inspections.databinding.ItemInspectionsDetailsBinding
 
 class ModalAdapter(private val listener: TaskAdapter.TaskClickListener) :
     ListAdapter<InspectionDetails, ModalAdapter.ModalViewHolder>(COMPARATOR) {
+    var inspectionDetails: InspectionDetails? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModalViewHolder {
@@ -26,23 +27,31 @@ class ModalAdapter(private val listener: TaskAdapter.TaskClickListener) :
     }
 
     override fun onBindViewHolder(holder: ModalViewHolder, position: Int) {
-
-
-        holder.bind(getItem(position))
+        inspectionDetails = getItem(position)
+        inspectionDetails?.let {
+            holder.bind(it)
+        }
 
 
     }
 
     inner class ModalViewHolder(var binding: ItemInspectionsDetailsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        private val areaAdapter = AreaAdapter(listener)
-        fun bind(details: InspectionDetails) {
-            binding.txtInspectionsTypeTitle.text = details.inspectionName
-            areaAdapter.submitList(details.list)
-            binding.rvWorkingArea.apply {
-                adapter = areaAdapter
-                setHasFixedSize(true)
 
+
+        fun bind(details: InspectionDetails) {
+
+            inspectionDetails?.let {
+                val areaAdapter = AreaAdapter(it, listener)
+                areaAdapter.submitList(details.list)
+
+                binding.txtInspectionsTypeTitle.text = details.inspectionName
+
+                binding.rvWorkingArea.apply {
+                    adapter = areaAdapter
+                    setHasFixedSize(true)
+
+                }
             }
 
 

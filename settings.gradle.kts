@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "inspections"
 include(":app")
+include(":swipehelperlib")

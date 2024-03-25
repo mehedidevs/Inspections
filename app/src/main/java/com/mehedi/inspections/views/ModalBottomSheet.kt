@@ -17,7 +17,8 @@ import com.mehedi.inspections.R
 import com.mehedi.inspections.adapter.ModalAdapter
 import com.mehedi.inspections.adapter.TaskAdapter
 import com.mehedi.inspections.data.Images
-import com.mehedi.inspections.data.TaskStatus
+import com.mehedi.inspections.data.Inspection
+import com.mehedi.inspections.data.InspectionDetails
 import com.mehedi.inspections.databinding.ModalBottomSheetContentBinding
 import com.mehedi.inspections.utils.toast
 import kotlin.math.roundToInt
@@ -30,6 +31,9 @@ class ModalBottomSheet : BottomSheetDialogFragment(), TaskAdapter.TaskClickListe
     private lateinit var behavior: BottomSheetBehavior<View>
 
     private val viewModel: InspectionViewModel by activityViewModels()
+
+    lateinit var inspection: Inspection
+    lateinit var modalAdapter: ModalAdapter
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
@@ -74,8 +78,9 @@ class ModalBottomSheet : BottomSheetDialogFragment(), TaskAdapter.TaskClickListe
     private fun setInspectionObserver() {
 
         viewModel.inspection.observe(viewLifecycleOwner) { inspection ->
+            this.inspection = inspection
 
-            val modalAdapter = ModalAdapter(this@ModalBottomSheet)
+            modalAdapter = ModalAdapter(this@ModalBottomSheet)
             modalAdapter.submitList(inspection.inspectionDetailsList)
 
             binding.apply {
@@ -110,7 +115,5 @@ class ModalBottomSheet : BottomSheetDialogFragment(), TaskAdapter.TaskClickListe
 
     }
 
-    override fun onTaskStatusUpdate(status: TaskStatus) {
 
-    }
 }

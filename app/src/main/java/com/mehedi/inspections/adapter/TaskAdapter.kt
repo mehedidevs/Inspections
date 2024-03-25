@@ -1,21 +1,33 @@
 package com.mehedi.inspections.adapter
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.mehedi.inspections.R
 import com.mehedi.inspections.data.Images
+import com.mehedi.inspections.data.InspectionDetails
 import com.mehedi.inspections.data.TaskDetails
 import com.mehedi.inspections.data.TaskStatus
 import com.mehedi.inspections.databinding.ItemTaskBinding
 
-class TaskAdapter(private val listener: TaskClickListener) :
-    ListAdapter<TaskDetails, TaskAdapter.TaskViewHolder>(COMPARATOR) {
+class TaskAdapter(
+    private var taskList: List<TaskDetails>,
+    private val listener: TaskClickListener
+) :
+    RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateTaskList(taskList: List<TaskDetails>) {
+        this.taskList = taskList
+        notifyDataSetChanged()
+    }
+
 
     interface TaskClickListener {
         fun onTaskClick(images: Images)
-        fun onTaskStatusUpdate(status: TaskStatus)
 
     }
 
@@ -29,19 +41,24 @@ class TaskAdapter(private val listener: TaskClickListener) :
         )
     }
 
+    override fun getItemCount(): Int {
+        return taskList.size
+    }
+
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(taskList[position])
     }
 
     inner class TaskViewHolder(var binding: ItemTaskBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        private val context: Context = binding.root.context
         fun bind(details: TaskDetails) {
             binding.apply {
                 txtTaskTitle.text = details.title
                 txtStarCount.text = details.numberOfStar.toString()
                 txtAttachCount.text = details.numberOfAttach.toString()
                 txtCommentsCount.text = details.numberOfComments.toString()
-
+                setStatusIndicator(details.taskStatus, binding.viewStatusIndicator)
                 itemView.setOnClickListener {
                     listener.onTaskClick(details.images)
                 }
@@ -50,25 +67,58 @@ class TaskAdapter(private val listener: TaskClickListener) :
 
 
         }
-    }
 
+        private fun setStatusIndicator(taskStatus: TaskStatus, viewStatusIndicator: View) {
+            when (taskStatus) {
+                TaskStatus.NO_STATUS -> {
+                    viewStatusIndicator.setBackgroundColor(
+                        context.resources.getColor(
+                            R.color.white,
+                            null
+                        )
+                    )
+                }
 
-    companion object {
+                TaskStatus.DONE -> {
+                    viewStatusIndicator.setBackgroundColor(
+                        context.resources.getColor(
+                            R.color.green,
+                            null
+                        )
+                    )
+                }
 
-        val COMPARATOR = object : DiffUtil.ItemCallback<TaskDetails>() {
-            override fun areItemsTheSame(
-                oldItem: TaskDetails,
-                newItem: TaskDetails
-            ): Boolean {
-                return oldItem.title == newItem.title
+                TaskStatus.BLOCK -> {
+                    viewStatusIndicator.setBackgroundColor(
+                        context.resources.getColor(
+                            R.color.grey,
+                            null
+                        )
+                    )
+                }
+
+                TaskStatus.NEXT_TIME -> {
+                    viewStatusIndicator.setBackgroundColor(
+                        context.resources.getColor(
+                            R.color.yellow,
+                            null
+                        )
+                    )
+                }
+
+                TaskStatus.CANCEL -> {
+                    viewStatusIndicator.setBackgroundColor(
+                        context.resources.getColor(
+                            R.color.red,
+                            null
+                        )
+                    )
+                }
             }
 
-            override fun areContentsTheSame(
-                oldItem: TaskDetails,
-                newItem: TaskDetails
-            ): Boolean {
-                return oldItem == newItem
-            }
+
         }
     }
+
+
 }
