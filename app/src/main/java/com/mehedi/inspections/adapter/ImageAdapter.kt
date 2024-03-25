@@ -3,8 +3,8 @@ package com.mehedi.inspections.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.mehedi.inspections.R
 import com.mehedi.inspections.databinding.ItemImageSlideBinding
 
 class ImageAdapter(
@@ -27,7 +27,8 @@ class ImageAdapter(
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        Glide.with(holder.itemView.context).load(imageList[position]).into(holder.binding.imageView)
+        Glide.with(holder.itemView.context).load(imageList[position])
+            .placeholder(R.drawable.img_placeholder).into(holder.binding.imageView)
 
     }
 
