@@ -1,4 +1,4 @@
-package com.mehedi.inspections.views
+package com.mehedi.inspections.utils
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,15 +7,11 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.mehedi.inspections.R
 
-class DividerItemDecoration : RecyclerView.ItemDecoration {
+class DividerItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
     private var mDivider: Drawable? = null
 
-    constructor(context: Context) {
+    init {
         mDivider = ContextCompat.getDrawable(context, R.drawable.line_divider)
-    }
-
-    constructor(context: Context, drawable: Int) {
-        mDivider = ContextCompat.getDrawable(context, drawable)
     }
 
     override fun onDrawOver(c: Canvas, recyclerView: RecyclerView, state: RecyclerView.State) {

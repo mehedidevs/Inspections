@@ -41,9 +41,7 @@ class InspectionViewModel(private val inspectionRepository: InspectionRepository
         _images.postValue(images)
     }
 
-    fun clearImages() {
-        _images.postValue(Images(emptyList()))
-    }
+
 
 
 }

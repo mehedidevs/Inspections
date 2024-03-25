@@ -48,7 +48,7 @@
         android:layout_height="@dimen/large_spacing"
 
         android:contentDescription="@string/rating_button"
-        android:src="@drawable/ic_info"
+        android:src="@drawable/ic_attach"
         app:layout_constraintStart_toEndOf="@id/txt_star_count"
         app:layout_constraintTop_toTopOf="@id/img_star" />
 
@@ -70,7 +70,7 @@
         android:layout_width="@dimen/large_spacing"
         android:layout_height="@dimen/large_spacing"
         android:contentDescription="@string/rating_button"
-        android:src="@drawable/ic_info"
+        android:src="@drawable/ic_comment"
         app:layout_constraintStart_toEndOf="@id/txt_attach_count"
         app:layout_constraintTop_toTopOf="@+id/img_star" />
 

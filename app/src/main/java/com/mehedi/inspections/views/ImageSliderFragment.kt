@@ -50,7 +50,6 @@ class ImageSliderFragment : DialogFragment() {
     private fun setListener() {
         binding.imgClose.setOnClickListener {
             dismiss()
-            viewModel.clearImages()
             viewPager2.adapter = ImageAdapter(emptyList())
         }
 
@@ -139,11 +138,7 @@ class ImageSliderFragment : DialogFragment() {
         const val TAG = "images_slider"
 
     }
-
-    override fun onDestroyView() {
-        viewPager2.unregisterOnPageChangeCallback(pageChangeListener)
-        super.onDestroyView()
-    }
+    
 
     override fun onDestroy() {
         viewPager2.unregisterOnPageChangeCallback(pageChangeListener)

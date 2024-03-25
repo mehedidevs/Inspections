@@ -12,7 +12,7 @@
         style="@style/txt_style_title"
         android:layout_width="@dimen/_0dp"
         android:layout_height="match_parent"
-        android:background="@color/grey"
+        android:background="@color/dark_grey"
         android:padding="@dimen/medium_spacing"
         app:drawableEndCompat="@drawable/ic_down_arrow"
         app:layout_constraintEnd_toEndOf="parent"

@@ -11,7 +11,7 @@ import com.mehedi.inspections.data.TaskStatus
 import com.mehedi.inspections.data.WorkingArea
 import com.mehedi.inspections.databinding.ItemInspectionsAreaBinding
 import com.mehedi.inspections.utils.handleVisibility
-import com.mehedi.inspections.views.DividerItemDecoration
+import com.mehedi.inspections.utils.DividerItemDecoration
 import com.mehedi.swipehelperlib.SwipeHelper
 
 class AreaAdapter(

@@ -57,6 +57,10 @@ class ModalBottomSheetFragment : BottomSheetDialogFragment(), TaskAdapter.TaskCl
             btnModalInfo.setOnClickListener {
                 toast("Show Some Information ")
             }
+            btnComplete.setOnClickListener {
+                dismiss()
+
+            }
         }
 
     }

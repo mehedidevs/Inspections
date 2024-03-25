@@ -553,9 +553,833 @@ class InspectionRepository {
                 )
             )
         ),
-
-
+        Inspection(
+            inspectionType = "Fire Safety Inspection",
+            propertyName = "123 Main Street",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
+            inspectedBy = "John Doe",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Fire Safety Equipment",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Fire Extinguishers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check pressure gauge",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for physical damage",
+                                    numberOfStar = 2,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Emergency Exit",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Ensure clear pathway",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Test emergency lighting",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                ),
+                InspectionDetails(
+                    inspectionName = "Electrical Safety",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Circuit Breakers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for proper labeling",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for overheating",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Electrical Outlets",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for grounding",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for loose connections",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Fire Safety Inspection",
+            propertyName = "123 Main Street",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
+            inspectedBy = "John Doe",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Fire Safety Equipment",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Fire Extinguishers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check pressure gauge",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for physical damage",
+                                    numberOfStar = 2,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Emergency Exit",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Ensure clear pathway",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Test emergency lighting",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                ),
+                InspectionDetails(
+                    inspectionName = "Electrical Safety",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Circuit Breakers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for proper labeling",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for overheating",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Electrical Outlets",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for grounding",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for loose connections",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Fire Safety Inspection",
+            propertyName = "123 Main Street",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
+            inspectedBy = "John Doe",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Fire Safety Equipment",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Fire Extinguishers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check pressure gauge",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for physical damage",
+                                    numberOfStar = 2,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Emergency Exit",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Ensure clear pathway",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Test emergency lighting",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                ),
+                InspectionDetails(
+                    inspectionName = "Electrical Safety",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Circuit Breakers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for proper labeling",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for overheating",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Electrical Outlets",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for grounding",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for loose connections",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Fire Safety Inspection",
+            propertyName = "123 Main Street",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
+            inspectedBy = "John Doe",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Fire Safety Equipment",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Fire Extinguishers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check pressure gauge",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for physical damage",
+                                    numberOfStar = 2,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Emergency Exit",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Ensure clear pathway",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Test emergency lighting",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                ),
+                InspectionDetails(
+                    inspectionName = "Electrical Safety",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Circuit Breakers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for proper labeling",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for overheating",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Electrical Outlets",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for grounding",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for loose connections",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Fire Safety Inspection",
+            propertyName = "123 Main Street",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
+            inspectedBy = "John Doe",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Fire Safety Equipment",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Fire Extinguishers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check pressure gauge",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for physical damage",
+                                    numberOfStar = 2,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Emergency Exit",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Ensure clear pathway",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Test emergency lighting",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                ),
+                InspectionDetails(
+                    inspectionName = "Electrical Safety",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Circuit Breakers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for proper labeling",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for overheating",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Electrical Outlets",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for grounding",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for loose connections",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Fire Safety Inspection",
+            propertyName = "123 Main Street",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
+            inspectedBy = "John Doe",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Fire Safety Equipment",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Fire Extinguishers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check pressure gauge",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for physical damage",
+                                    numberOfStar = 2,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Emergency Exit",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Ensure clear pathway",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Test emergency lighting",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                ),
+                InspectionDetails(
+                    inspectionName = "Electrical Safety",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Circuit Breakers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for proper labeling",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for overheating",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Electrical Outlets",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for grounding",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for loose connections",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Fire Safety Inspection",
+            propertyName = "123 Main Street",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
+            inspectedBy = "John Doe",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Fire Safety Equipment",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Fire Extinguishers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check pressure gauge",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for physical damage",
+                                    numberOfStar = 2,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Emergency Exit",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Ensure clear pathway",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Test emergency lighting",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                ),
+                InspectionDetails(
+                    inspectionName = "Electrical Safety",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Circuit Breakers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for proper labeling",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for overheating",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Electrical Outlets",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for grounding",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for loose connections",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Fire Safety Inspection",
+            propertyName = "123 Main Street",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
+            inspectedBy = "John Doe",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Fire Safety Equipment",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Fire Extinguishers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check pressure gauge",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for physical damage",
+                                    numberOfStar = 2,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Emergency Exit",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Ensure clear pathway",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Test emergency lighting",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                ),
+                InspectionDetails(
+                    inspectionName = "Electrical Safety",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Circuit Breakers",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for proper labeling",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for overheating",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Electrical Outlets",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for grounding",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 3,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect for loose connections",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
         )
+
+
+    )
 
 
     private fun images() = Images(
