@@ -7,4 +7,5 @@
     <string name="modal_information_button">modal information button</string>
     <string name="rating_button">rating button</string>
     <string name="close_image_slider_page">close image slider page</string>
+    <string name="slider_image_view">slider image view</string>
 </resources>

@@ -3,11 +3,12 @@ package com.mehedi.inspections.views
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mehedi.inspections.data.DataSource
 import com.mehedi.inspections.data.Images
 import com.mehedi.inspections.data.Inspection
+import com.mehedi.inspections.data.InspectionRepository
 
-class InspectionViewModel : ViewModel() {
+class InspectionViewModel(private val inspectionRepository: InspectionRepository = InspectionRepository()) :
+    ViewModel() {
 
 
     private val _inspectionResponse = MutableLiveData<List<Inspection>>()
@@ -15,7 +16,7 @@ class InspectionViewModel : ViewModel() {
         get() = _inspectionResponse
 
     private fun getInspection() {
-        _inspectionResponse.postValue(DataSource.dummyInspections)
+        _inspectionResponse.postValue(inspectionRepository.getInspections())
 
     }
 
@@ -30,7 +31,6 @@ class InspectionViewModel : ViewModel() {
     fun onClickInspection(inspection: Inspection) {
         _inspection.postValue(inspection)
     }
-
 
 
     private val _images = MutableLiveData<Images>()

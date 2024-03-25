@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:adjustViewBounds="true"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="@dimen/large_spacing">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/slider_image_view"
         android:scaleType="centerCrop" />
 
 </androidx.cardview.widget.CardView>

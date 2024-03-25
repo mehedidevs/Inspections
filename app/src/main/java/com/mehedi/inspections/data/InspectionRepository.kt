@@ -1,8 +1,12 @@
 package com.mehedi.inspections.data
 
-object DataSource {
+class InspectionRepository {
+    fun getInspections(): MutableList<Inspection> {
+        return dummyInspections
+    }
 
-    val dummyInspections = mutableListOf(
+
+    private val dummyInspections = mutableListOf(
         Inspection(
             inspectionType = "Fire Safety Inspection",
             propertyName = "123 Main Street",

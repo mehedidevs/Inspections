@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/txt_inspections_title"
         style="@style/txt_style_title"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_0dp"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="@dimen/medium_spacing"
         android:layout_marginTop="@dimen/medium_spacing"
@@ -23,7 +23,7 @@
     <TextView
         android:id="@+id/txt_inspections_sub_title"
         style="@style/txt_style_sub_title"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_0dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/medium_spacing"
         app:layout_constraintBottom_toBottomOf="parent"

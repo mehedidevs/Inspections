@@ -2,7 +2,7 @@
 <resources>
 
     <style name="txt_style_sub_title">
-        <item name="android:fontFamily">@font/poppins_light</item>
+        <item name="android:fontFamily">@font/poppins</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>

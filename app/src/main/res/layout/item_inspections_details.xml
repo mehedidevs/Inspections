@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/txt_inspections_type_title"
         style="@style/txt_style_title"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_0dp"
         android:layout_height="match_parent"
         android:background="@color/grey"
         android:padding="@dimen/medium_spacing"
@@ -23,7 +23,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_working_area"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/_0dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
