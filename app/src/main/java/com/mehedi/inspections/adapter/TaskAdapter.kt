@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mehedi.inspections.R
 import com.mehedi.inspections.data.Images
-import com.mehedi.inspections.data.InspectionDetails
 import com.mehedi.inspections.data.TaskDetails
 import com.mehedi.inspections.data.TaskStatus
 import com.mehedi.inspections.databinding.ItemTaskBinding
@@ -16,8 +15,13 @@ import com.mehedi.inspections.databinding.ItemTaskBinding
 class TaskAdapter(
     private var taskList: List<TaskDetails>,
     private val listener: TaskClickListener
-) :
-    RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+
+
+    interface TaskClickListener {
+        fun onTaskClick(images: Images)
+
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateTaskList(taskList: List<TaskDetails>) {
@@ -25,11 +29,6 @@ class TaskAdapter(
         notifyDataSetChanged()
     }
 
-
-    interface TaskClickListener {
-        fun onTaskClick(images: Images)
-
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         return TaskViewHolder(

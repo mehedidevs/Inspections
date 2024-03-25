@@ -14,7 +14,7 @@ import com.mehedi.inspections.utils.handleVisibility
 import com.mehedi.swipehelperlib.SwipeHelper
 
 class AreaAdapter(
-    val inspectionDetails: InspectionDetails,
+    private val inspectionDetails: InspectionDetails,
     private val listener: TaskAdapter.TaskClickListener
 ) :
     ListAdapter<WorkingArea, AreaAdapter.AreaViewHolder>(COMPARATOR) {

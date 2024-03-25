@@ -4,9 +4,9 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 enum class InspectionStatus(val status: String) {
-    INPROGRESS("inprogress"),
-    CANCEL("cancel"),
-    DONE("done")
+    IN_PROGRESS("In Progress"),
+    CANCEL("Cancel"),
+    DONE("Done")
 }
 
 enum class TaskStatus(val status: String) {
@@ -27,13 +27,13 @@ data class Inspection(
 )
 
 data class InspectionDetails(
-    val inspectionName: String, // Showing current Rv
-    val list: MutableList<WorkingArea> // will be shown to the child Rv
+    val inspectionName: String,
+    val list: MutableList<WorkingArea>
 )
 
 data class WorkingArea(
-    val name: String, // Showing current Rv
-    val list: MutableList<TaskDetails> // will be shown to the child Rv
+    val name: String,
+    val list: MutableList<TaskDetails>
 )
 
 

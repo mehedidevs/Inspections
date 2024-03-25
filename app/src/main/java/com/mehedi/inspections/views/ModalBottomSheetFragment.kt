@@ -6,57 +6,41 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.mehedi.inspections.R
 import com.mehedi.inspections.adapter.ModalAdapter
 import com.mehedi.inspections.adapter.TaskAdapter
 import com.mehedi.inspections.data.Images
 import com.mehedi.inspections.data.Inspection
-import com.mehedi.inspections.databinding.ModalBottomSheetContentBinding
+import com.mehedi.inspections.databinding.FragmentModalBottomSheetBinding
+import com.mehedi.inspections.utils.toDateMonthTime
 import com.mehedi.inspections.utils.toast
 import kotlin.math.roundToInt
 
 
-class ModalBottomSheet : BottomSheetDialogFragment(), TaskAdapter.TaskClickListener {
+class ModalBottomSheetFragment : BottomSheetDialogFragment(), TaskAdapter.TaskClickListener {
 
     private lateinit var dialog: BottomSheetDialog
-    private lateinit var binding: ModalBottomSheetContentBinding
+    private lateinit var binding: FragmentModalBottomSheetBinding
     private lateinit var behavior: BottomSheetBehavior<View>
-
-    private val viewModel: InspectionViewModel by activityViewModels()
-
     private lateinit var inspection: Inspection
     private lateinit var modalAdapter: ModalAdapter
-
     private val imageSliderFragment: ImageSliderFragment by lazy {
         ImageSliderFragment()
     }
 
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-        return dialog
-    }
-
+    private val viewModel: InspectionViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =
-            DataBindingUtil.inflate(
-                layoutInflater,
-                R.layout.modal_bottom_sheet_content,
-                container,
-                false
-            )
-        binding.lifecycleOwner = this
-        binding.viewmodel = viewModel
+        binding = FragmentModalBottomSheetBinding.inflate(inflater, container, false)
+
+
 
         setInspectionObserver()
         setListener()
@@ -68,7 +52,7 @@ class ModalBottomSheet : BottomSheetDialogFragment(), TaskAdapter.TaskClickListe
     private fun setListener() {
         binding.apply {
             btnModalBack.setOnClickListener {
-                this@ModalBottomSheet.dismiss()
+                this@ModalBottomSheetFragment.dismiss()
             }
             btnModalInfo.setOnClickListener {
                 toast("Show Some Information ")
@@ -79,20 +63,25 @@ class ModalBottomSheet : BottomSheetDialogFragment(), TaskAdapter.TaskClickListe
 
     private fun setInspectionObserver() {
 
-        viewModel.inspection.observe(viewLifecycleOwner) { inspection ->
-            this.inspection = inspection
+        viewModel.inspection.observe(viewLifecycleOwner) {
+            inspection = it
 
-            modalAdapter = ModalAdapter(this@ModalBottomSheet)
+            modalAdapter = ModalAdapter(this@ModalBottomSheetFragment)
             modalAdapter.submitList(inspection.inspectionDetailsList)
 
             binding.apply {
-                txtPropertyName.text = inspection.propertyName
+                txtPropertyName.text = inspection.inspectionType
                 txtHotelName.text = inspection.propertyName
+                txtDetails.text = getDetails(inspection)
                 rvModal.adapter = modalAdapter
             }
         }
 
 
+    }
+
+    private fun getDetails(inspection: Inspection): String {
+        return "${inspection.inspectionStatus.status}, ${inspection.inspectionDate.toDateMonthTime()}, by ${inspection.inspectedBy}."
     }
 
 
@@ -105,17 +94,20 @@ class ModalBottomSheet : BottomSheetDialogFragment(), TaskAdapter.TaskClickListe
 
     }
 
+    override fun onTaskClick(images: Images) {
+        viewModel.onClickImages(images)
+        imageSliderFragment.show(childFragmentManager, ImageSliderFragment.TAG)
+
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+        return dialog
+    }
+
+
     companion object {
         const val TAG = "ModalBottomSheet"
     }
-
-    override fun onTaskClick(images: Images) {
-
-        viewModel.onClickImages(images)
-        imageSliderFragment.show(childFragmentManager, ImageSliderFragment.TAG)
-        //dismiss()
-
-    }
-
 
 }

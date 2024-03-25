@@ -34,9 +34,7 @@ class ImageSliderFragment : DialogFragment() {
         setMargins(8, 0, 8, 0)
     }
 
-    override fun getTheme(): Int {
-        return R.style.DialogTheme
-    }
+
 
 
     override fun onCreateView(
@@ -132,7 +130,9 @@ class ImageSliderFragment : DialogFragment() {
         }
 
     }
-
+    override fun getTheme(): Int {
+        return R.style.DialogTheme
+    }
     companion object {
         const val TAG = "images_slider"
 

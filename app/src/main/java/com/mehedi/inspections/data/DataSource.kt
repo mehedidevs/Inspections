@@ -7,7 +7,7 @@ object DataSource {
             inspectionType = "Fire Safety Inspection",
             propertyName = "123 Main Street",
             inspectionDate = System.currentTimeMillis(),
-            inspectionStatus = InspectionStatus.INPROGRESS,
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
             inspectedBy = "John Doe",
             inspectionDetailsList = mutableListOf(
                 InspectionDetails(

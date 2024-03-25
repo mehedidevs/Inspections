@@ -11,11 +11,11 @@ import com.mehedi.inspections.utils.handleVisibility
 
 class ModalAdapter(private val listener: TaskAdapter.TaskClickListener) :
     ListAdapter<InspectionDetails, ModalAdapter.ModalViewHolder>(COMPARATOR) {
+
     var inspectionDetails: InspectionDetails? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModalViewHolder {
-
         return ModalViewHolder(
             ItemInspectionsDetailsBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -23,8 +23,6 @@ class ModalAdapter(private val listener: TaskAdapter.TaskClickListener) :
                 false
             )
         )
-
-
     }
 
     override fun onBindViewHolder(holder: ModalViewHolder, position: Int) {
@@ -32,16 +30,12 @@ class ModalAdapter(private val listener: TaskAdapter.TaskClickListener) :
         inspectionDetails?.let {
             holder.bind(it)
         }
-
-
     }
 
     inner class ModalViewHolder(var binding: ItemInspectionsDetailsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-
         fun bind(details: InspectionDetails) {
-
             inspectionDetails?.let {
                 val areaAdapter = AreaAdapter(it, listener)
                 areaAdapter.submitList(details.list)

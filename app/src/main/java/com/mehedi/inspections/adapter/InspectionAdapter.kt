@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mehedi.inspections.data.Inspection
 import com.mehedi.inspections.databinding.ItemInspectionsBinding
+import com.mehedi.inspections.utils.toDateMonth
 
 class InspectionAdapter(private val listener: InspectionListener) :
     ListAdapter<Inspection, InspectionAdapter.InspectionViewHolder>(COMPARATOR) {
@@ -33,7 +34,7 @@ class InspectionAdapter(private val listener: InspectionListener) :
             binding.apply {
                 txtInspectionsTitle.text = inspection.inspectionType
                 txtInspectionsSubTitle.text = inspection.propertyName
-                txtInspectionsDate.text = "${inspection.inspectionDate}"
+                txtInspectionsDate.text = inspection.inspectionDate.toDateMonth()
                 itemView.setOnClickListener {
                     listener.onInspectionClicked(inspection)
                 }

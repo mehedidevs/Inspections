@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="txt_style_sub_title">
         <item name="android:fontFamily">@font/poppins_light</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
-        <item name="android:textAppearance">@style/TextAppearance.Material3.LabelSmall</item>
+        <item name="android:textAppearance">@style/TextAppearance.Material3.TitleSmall</item>
     </style>
 
     <style name="txt_style_title">
@@ -26,9 +26,6 @@
         <item name="android:textAppearance">@style/TextAppearance.Material3.TitleLarge</item>
         <item name="android:textColor">@color/black</item>
     </style>
-
-
-
 
 
 </resources>
