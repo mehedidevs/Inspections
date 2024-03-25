@@ -4,20 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".views.ImageSliderFragment">
+
+
+    <ImageView
+        android:id="@+id/img_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="@dimen/large_spacing"
+        android:contentDescription="@string/close_image_slider_page"
+        android:padding="@dimen/small_spacing"
+        android:src="@drawable/ic_close_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager2"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="150dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="80dp"
         android:paddingStart="36dp"
         android:paddingEnd="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/img_close" />
 
     <LinearLayout
         android:id="@+id/slideDotLL"
@@ -25,8 +39,10 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPager2" />
+        app:layout_constraintTop_toBottomOf="@id/viewPager2"
+        app:layout_constraintVertical_bias=".2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

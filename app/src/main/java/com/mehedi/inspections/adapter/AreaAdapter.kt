@@ -1,6 +1,5 @@
 package com.mehedi.inspections.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -11,6 +10,7 @@ import com.mehedi.inspections.data.InspectionDetails
 import com.mehedi.inspections.data.TaskStatus
 import com.mehedi.inspections.data.WorkingArea
 import com.mehedi.inspections.databinding.ItemInspectionsAreaBinding
+import com.mehedi.inspections.utils.handleVisibility
 import com.mehedi.swipehelperlib.SwipeHelper
 
 class AreaAdapter(
@@ -44,11 +44,22 @@ class AreaAdapter(
 
         fun bind(workingArea: WorkingArea, position: Int) {
             taskAdapter = TaskAdapter(workingArea.list, listener)
-            binding.txtInspectionsSubTitle.text = workingArea.name
-            binding.rvTask.apply {
-                adapter = taskAdapter
-                setHasFixedSize(true)
+            binding.apply {
+                txtInspectionsSubTitle.text = workingArea.name
+
+                txtInspectionsSubTitle.setOnClickListener {
+                    rvTask.handleVisibility(txtInspectionsSubTitle)
+                }
+
+                binding.rvTask.apply {
+                    adapter = taskAdapter
+                    setHasFixedSize(true)
+                }
+
+
             }
+
+
             handleRecyclerviewSwipe(position)
 
 
@@ -56,7 +67,7 @@ class AreaAdapter(
 
         private fun handleRecyclerviewSwipe(position: Int) {
             val context = binding.root.context
-            @SuppressLint("NotifyDataSetChanged")
+
             object : SwipeHelper(context, binding.rvTask, true) {
 
                 override fun instantiateUnderlayButton(

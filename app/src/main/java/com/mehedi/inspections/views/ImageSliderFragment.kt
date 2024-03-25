@@ -1,15 +1,13 @@
 package com.mehedi.inspections.views
 
-import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -21,20 +19,23 @@ import com.mehedi.inspections.databinding.FragmentImageSliderBinding
 import kotlin.math.abs
 
 
-class ImageSliderFragment : Fragment() {
+class ImageSliderFragment : DialogFragment() {
 
     lateinit var binding: FragmentImageSliderBinding
     private lateinit var viewPager2: ViewPager2
-
     private lateinit var adapter: ImageAdapter
-
     private lateinit var pageChangeListener: ViewPager2.OnPageChangeCallback
+    private val viewModel: InspectionViewModel by activityViewModels()
 
     private val params = LinearLayout.LayoutParams(
         LinearLayout.LayoutParams.WRAP_CONTENT,
         LinearLayout.LayoutParams.WRAP_CONTENT
     ).apply {
         setMargins(8, 0, 8, 0)
+    }
+
+    override fun getTheme(): Int {
+        return R.style.DialogTheme
     }
 
 
@@ -45,21 +46,28 @@ class ImageSliderFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentImageSliderBinding.inflate(inflater, container, false)
         viewPager2 = binding.viewPager2
-        arguments?.let { data ->
-
-            val images = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                data.getParcelable("images", Images::class.java)
-            } else {
-                data.getParcelable("images")
-            }
-            init(images)
-            setUpTransformer()
-            setDots(images)
-
-
-        }
+        setImageObserver()
+        setListener()
         return binding.root
     }
+
+    private fun setListener() {
+        binding.imgClose.setOnClickListener {
+            dismiss()
+        }
+
+
+    }
+
+    private fun setImageObserver() {
+        viewModel.images.observe(viewLifecycleOwner) {
+            init(it)
+            setUpTransformer()
+            setDots(it)
+        }
+
+    }
+
 
     private fun setDots(images: Images?) {
 
@@ -101,8 +109,6 @@ class ImageSliderFragment : Fragment() {
     }
 
 
-
-
     private fun setUpTransformer() {
         val transformer = CompositePageTransformer()
         transformer.addTransformer(MarginPageTransformer(40))
@@ -127,7 +133,10 @@ class ImageSliderFragment : Fragment() {
 
     }
 
+    companion object {
+        const val TAG = "images_slider"
 
+    }
 
     override fun onDestroy() {
         super.onDestroy()

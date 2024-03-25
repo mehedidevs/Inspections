@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_inspections_item"
             android:padding="@dimen/medium_spacing"
-            app:drawableEndCompat="@drawable/ic_down_arrow"
+            app:drawableEndCompat="@drawable/ic_up_arrow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

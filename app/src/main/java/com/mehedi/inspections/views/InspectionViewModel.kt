@@ -3,8 +3,9 @@ package com.mehedi.inspections.views
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mehedi.inspections.data.Inspection
 import com.mehedi.inspections.data.DataSource
+import com.mehedi.inspections.data.Images
+import com.mehedi.inspections.data.Inspection
 
 class InspectionViewModel : ViewModel() {
 
@@ -29,6 +30,16 @@ class InspectionViewModel : ViewModel() {
 
     fun onClickInspection(inspection: Inspection) {
         _inspection.postValue(inspection)
+    }
+
+    //Images
+
+    private val _images = MutableLiveData<Images>()
+    val images: LiveData<Images>
+        get() = _images
+
+    fun onClickImages(images: Images) {
+        _images.postValue(images)
     }
 
 

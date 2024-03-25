@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mehedi.inspections.data.InspectionDetails
 import com.mehedi.inspections.databinding.ItemInspectionsDetailsBinding
+import com.mehedi.inspections.utils.handleVisibility
 
 class ModalAdapter(private val listener: TaskAdapter.TaskClickListener) :
     ListAdapter<InspectionDetails, ModalAdapter.ModalViewHolder>(COMPARATOR) {
@@ -45,12 +46,16 @@ class ModalAdapter(private val listener: TaskAdapter.TaskClickListener) :
                 val areaAdapter = AreaAdapter(it, listener)
                 areaAdapter.submitList(details.list)
 
-                binding.txtInspectionsTypeTitle.text = details.inspectionName
+                binding.apply {
+                    txtInspectionsTypeTitle.text = details.inspectionName
+                    txtInspectionsTypeTitle.setOnClickListener {
+                        rvWorkingArea.handleVisibility(txtInspectionsTypeTitle)
+                    }
 
-                binding.rvWorkingArea.apply {
-                    adapter = areaAdapter
-                    setHasFixedSize(true)
-
+                    rvWorkingArea.apply {
+                        adapter = areaAdapter
+                        setHasFixedSize(true)
+                    }
                 }
             }
 
