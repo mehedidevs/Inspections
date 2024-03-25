@@ -3,7 +3,7 @@ package com.mehedi.swipehelperlib;
 
 public abstract class SwipeHelper extends androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback {
 
-    public static final int BUTTON_WIDTH = 200;
+    public static final int BUTTON_WIDTH = 148;
     private final androidx.recyclerview.widget.RecyclerView recyclerView;
     private java.util.List<com.mehedi.swipehelperlib.SwipeHelper.UnderlayButton> buttons;
     private final android.view.GestureDetector gestureDetector;
@@ -150,14 +150,14 @@ public abstract class SwipeHelper extends androidx.recyclerview.widget.ItemTouch
         }
     }
 
-    private void drawButtons(android.graphics.Canvas c, android.view.View itemView, java.util.List<com.mehedi.swipehelperlib.SwipeHelper.UnderlayButton> buffer, int pos, float dX) {
+    private void drawButtons(android.graphics.Canvas canvas, android.view.View itemView, java.util.List<com.mehedi.swipehelperlib.SwipeHelper.UnderlayButton> buffer, int pos, float dX) {
         float right = itemView.getRight();
         float dButtonWidth = (-1) * dX / buffer.size();
 
         for (com.mehedi.swipehelperlib.SwipeHelper.UnderlayButton button : buffer) {
             float left = right - dButtonWidth;
             button.onDraw(
-                    c,
+                    canvas,
                     new android.graphics.RectF(
                             left,
                             itemView.getTop(),
@@ -181,15 +181,14 @@ public abstract class SwipeHelper extends androidx.recyclerview.widget.ItemTouch
     public static class UnderlayButton {
 
         private final android.graphics.drawable.Drawable imageResId;
-        private final int buttonBackgroundcolor;
-
+        private final int buttonBackgroundColor;
         private int pos;
         private android.graphics.RectF clickRegion;
         private final com.mehedi.swipehelperlib.SwipeHelper.UnderlayButtonClickListener clickListener;
 
-        public UnderlayButton(android.content.Context context, int imageId, String buttonBackgroundcolor, com.mehedi.swipehelperlib.SwipeHelper.UnderlayButtonClickListener clickListener) {
+        public UnderlayButton(android.content.Context context, int imageId, String buttonBackgroundColor, com.mehedi.swipehelperlib.SwipeHelper.UnderlayButtonClickListener clickListener) {
             this.imageResId = getDrawable(context, imageId);
-            this.buttonBackgroundcolor = android.graphics.Color.parseColor(buttonBackgroundcolor);
+            this.buttonBackgroundColor = android.graphics.Color.parseColor(buttonBackgroundColor);
             this.clickListener = clickListener;
         }
 
@@ -197,8 +196,6 @@ public abstract class SwipeHelper extends androidx.recyclerview.widget.ItemTouch
             return androidx.appcompat.content.res.AppCompatResources.getDrawable(
                     context,
                     imageId);
-
-
         }
 
         public boolean onClick(float x, float y) {
@@ -206,25 +203,33 @@ public abstract class SwipeHelper extends androidx.recyclerview.widget.ItemTouch
                 clickListener.onClick(pos);
                 return true;
             }
-
             return false;
         }
 
         private void onDraw(android.graphics.Canvas canvas, android.graphics.RectF rect, int pos) {
-
             android.graphics.Paint p = new android.graphics.Paint();
-            // Draw background
-            p.setColor(buttonBackgroundcolor);
-            canvas.drawRect(rect, p);
 
+            // Calculate the size of the square
+            float squareSize = Math.min(rect.width(), rect.height());
+
+            // Calculate the coordinates for the square
+            float left = rect.left + (rect.width() - squareSize) / 2;
+            float top = rect.top + (rect.height() - squareSize) / 2;
+            float right = left + squareSize;
+            float bottom = top + squareSize;
+
+            // Draw the background square
+            p.setColor(buttonBackgroundColor);
+            canvas.drawRect(left, top, right, bottom, p);
 
             if (imageResId != null) {
-
                 // Calculate bounds for the image
                 int imageWidth = imageResId.getIntrinsicWidth();
                 int imageHeight = imageResId.getIntrinsicHeight();
-                int imageLeft = (int) (rect.centerX() - imageWidth / 2);
-                int imageTop = (int) (rect.centerY() - imageHeight / 2);
+
+                // Calculate the position to center the image within the square
+                int imageLeft = (int) (left + (squareSize - imageWidth) / 2);
+                int imageTop = (int) (top + (squareSize - imageHeight) / 2);
                 int imageRight = imageLeft + imageWidth;
                 int imageBottom = imageTop + imageHeight;
 
@@ -233,22 +238,10 @@ public abstract class SwipeHelper extends androidx.recyclerview.widget.ItemTouch
                 imageResId.draw(canvas);
             }
 
-
-            canvas.save();
-            android.graphics.Rect r = new android.graphics.Rect();
-            float y = (rect.height() / 2f) + (r.height() / 2f) - r.bottom;
-
-            if (imageResId == null)
-                canvas.translate(rect.left, rect.top + y);
-            else
-                canvas.translate(rect.left, rect.top + y - 30);
-
-
-            canvas.restore();
-
-            clickRegion = rect;
+            clickRegion = new android.graphics.RectF(left, top, right, bottom);
             this.pos = pos;
         }
+
 
     }
 

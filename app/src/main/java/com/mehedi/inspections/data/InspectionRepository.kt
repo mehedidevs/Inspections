@@ -212,8 +212,350 @@ class InspectionRepository {
                     )
                 )
             )
+        ),
+        Inspection(
+            inspectionType = "Property Inspection",
+            propertyName = "Sample Property 1",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
+            inspectedBy = "John Doe",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Interior Inspection",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Living Room",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check furniture condition",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 3,
+                                    taskStatus = TaskStatus.NO_STATUS,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect walls for damages",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.NO_STATUS,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Kitchen",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check appliances",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.NO_STATUS,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect plumbing",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NO_STATUS,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Vehicle Inspection",
+            propertyName = "Sample Vehicle 1",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.DONE,
+            inspectedBy = "Jane Smith",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Exterior Inspection",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Body",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check for dents",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = Images(
+                                        imageList = listOf(
+                                            "image5.jpg"
+                                        )
+                                    )
+                                ),
+                                TaskDetails(
+                                    title = "Inspect paint condition",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 3,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Tires",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check tire pressure",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect tire tread depth",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Property Inspection",
+            propertyName = "Sample Property 2",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.CANCEL,
+            inspectedBy = "Alice Johnson",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Exterior Inspection",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Front Yard",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check lawn condition",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect exterior walls",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Backyard",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check fence condition",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect patio area",
+                                    numberOfStar = 3,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Property Inspection",
+            propertyName = "Sample Property 3",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.DONE,
+            inspectedBy = "Michael Brown",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Electrical Inspection",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Main Electrical Panel",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check circuit breakers",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect wiring connections",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Outdoor Lighting",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check bulbs",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect wiring",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Property Inspection",
+            propertyName = "Sample Property 4",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
+            inspectedBy = "Emily Wilson",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Plumbing Inspection",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Bathroom",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check faucets for leaks",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.BLOCK,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect toilet operation",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Kitchen",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check sink drainage",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect dishwasher operation",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+        Inspection(
+            inspectionType = "Vehicle Inspection",
+            propertyName = "Sample Vehicle 2",
+            inspectionDate = System.currentTimeMillis(),
+            inspectionStatus = InspectionStatus.IN_PROGRESS,
+            inspectedBy = "David Lee",
+            inspectionDetailsList = mutableListOf(
+                InspectionDetails(
+                    inspectionName = "Interior Inspection",
+                    list = mutableListOf(
+                        WorkingArea(
+                            name = "Dashboard",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check instrument cluster",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 0,
+                                    taskStatus = TaskStatus.NEXT_TIME,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect air conditioning system",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 2,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.DONE,
+                                    images = images()
+                                )
+                            )
+                        ),
+                        WorkingArea(
+                            name = "Seats",
+                            list = mutableListOf(
+                                TaskDetails(
+                                    title = "Check seat adjustment",
+                                    numberOfStar = 4,
+                                    numberOfAttach = 0,
+                                    numberOfComments = 2,
+                                    taskStatus = TaskStatus.CANCEL,
+                                    images = images()
+                                ),
+                                TaskDetails(
+                                    title = "Inspect seat upholstery",
+                                    numberOfStar = 5,
+                                    numberOfAttach = 1,
+                                    numberOfComments = 1,
+                                    taskStatus = TaskStatus.NO_STATUS,
+                                    images = images()
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        ),
+
+
         )
-    )
 
 
     private fun images() = Images(

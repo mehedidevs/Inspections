@@ -21,7 +21,7 @@ import kotlin.math.abs
 
 class ImageSliderFragment : DialogFragment() {
 
-    lateinit var binding: FragmentImageSliderBinding
+    private lateinit var binding: FragmentImageSliderBinding
     private lateinit var viewPager2: ViewPager2
     private lateinit var adapter: ImageAdapter
     private lateinit var pageChangeListener: ViewPager2.OnPageChangeCallback
@@ -33,8 +33,6 @@ class ImageSliderFragment : DialogFragment() {
     ).apply {
         setMargins(8, 0, 8, 0)
     }
-
-
 
 
     override fun onCreateView(
@@ -52,6 +50,8 @@ class ImageSliderFragment : DialogFragment() {
     private fun setListener() {
         binding.imgClose.setOnClickListener {
             dismiss()
+            viewModel.clearImages()
+            viewPager2.adapter = ImageAdapter(emptyList())
         }
 
 
@@ -61,47 +61,45 @@ class ImageSliderFragment : DialogFragment() {
         viewModel.images.observe(viewLifecycleOwner) {
             init(it)
             setUpTransformer()
-            setDots(it)
+
         }
 
     }
 
 
-    private fun setDots(images: Images?) {
-
-        images?.let {
-            val dotsImage = Array(images.imageList.size) { ImageView(context) }
-
-            dotsImage.forEach {
-                it.setImageResource(
-                    R.drawable.non_active_dot
-                )
-                binding.slideDotLL.addView(it, params)
-            }
-
-            // default first dot selected
-            dotsImage[0].setImageResource(R.drawable.active_dot)
-
-            pageChangeListener = object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-
-                    dotsImage.mapIndexed { index, imageView ->
-                        if (position == index) {
-                            imageView.setImageResource(
-                                R.drawable.active_dot
-                            )
-                        } else {
-                            imageView.setImageResource(R.drawable.non_active_dot)
-                        }
-                    }
+    private fun setDots(size: Int) {
 
 
+        val dotsImage = Array(size) { ImageView(context) }
 
-                    super.onPageSelected(position)
-                }
-            }
-            viewPager2.registerOnPageChangeCallback(pageChangeListener)
+        dotsImage.forEach {
+            it.setImageResource(
+                R.drawable.non_active_dot
+            )
+            binding.slideDotLL.addView(it, params)
         }
+
+        // default first dot selected
+        dotsImage[0].setImageResource(R.drawable.active_dot)
+
+        pageChangeListener = object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+
+                dotsImage.mapIndexed { index, imageView ->
+                    if (position == index) {
+                        imageView.setImageResource(
+                            R.drawable.active_dot
+                        )
+                    } else {
+                        imageView.setImageResource(R.drawable.non_active_dot)
+                    }
+                }
+
+
+                super.onPageSelected(position)
+            }
+        }
+        viewPager2.registerOnPageChangeCallback(pageChangeListener)
 
 
     }
@@ -121,25 +119,38 @@ class ImageSliderFragment : DialogFragment() {
     private fun init(images: Images?) {
 
         images?.let {
-            adapter = ImageAdapter(images.imageList.toMutableList())
+            adapter = ImageAdapter(it.imageList)
             viewPager2.adapter = adapter
             viewPager2.offscreenPageLimit = 3
             viewPager2.clipToPadding = false
             viewPager2.clipChildren = false
             viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            setDots(it.imageList.size)
         }
 
+
     }
+
     override fun getTheme(): Int {
         return R.style.DialogTheme
     }
+
     companion object {
         const val TAG = "images_slider"
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
         viewPager2.unregisterOnPageChangeCallback(pageChangeListener)
+        super.onDestroyView()
     }
+
+    override fun onDestroy() {
+        viewPager2.unregisterOnPageChangeCallback(pageChangeListener)
+        super.onDestroy()
+
+
+    }
+
+
 }

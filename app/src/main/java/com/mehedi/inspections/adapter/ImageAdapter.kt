@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.mehedi.inspections.databinding.ItemImageSlideBinding
 
 class ImageAdapter(
-    private val imageList: MutableList<String>
+    private val imageList: List<String>
 ) :
     RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 

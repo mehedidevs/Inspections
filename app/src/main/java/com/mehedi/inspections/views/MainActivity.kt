@@ -13,6 +13,7 @@ import com.mehedi.inspections.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,13 +27,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configStatusBar() {
-
-        //icon color -> white
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.decorView.windowInsetsController
                 ?.setSystemBarsAppearance(0, APPEARANCE_LIGHT_STATUS_BARS)
         }
-
     }
 
 
